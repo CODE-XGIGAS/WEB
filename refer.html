@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Collection</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f8f8f8;
+            color: #333;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: white;
+            padding: 15px 30px;
+            border-bottom: 2px solid #ddd;
+        }
+
+        .logo img {
+            width: 150px;
+            height: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            color: green;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: darkgreen;
+        }
+
+        .hero {
+            width: 100%;
+            max-width: 900px;
+            margin: 40px auto;
+            text-align: center;
+        }
+
+        .hero img {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+        }
+
+        .refer {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        button {
+            background-color: blue;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background-color: darkblue;
+        }
+
+        .section {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .section h2 {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo"><img src="logo.webp" alt="Logo"></div>
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#aboutus">About Us</a>
+            <a href="#contactus">Contact Us</a>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <img src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg" alt="Healthy Food">
+    </div>
+
+    <div class="refer">
+        <a href="product.html">
+            <button>Go to Our Food Collection</button>
+        </a>
+    </div>
+
+    <div class="section" id="aboutus">
+        <h2>About Us</h2>
+        <p>Welcome to our About section. You can get nutritional food and their recipes here.</p>
+        <p>Our mission is to provide high-quality, healthy, and delicious food options for everyone. We believe in the power of good nutrition and how it impacts overall well-being. 
+        Our team is dedicated to researching and sharing the best food recipes to help you maintain a balanced diet. 
+        We source only the freshest ingredients to ensure that every meal is nutritious and satisfying. 
+        Whether you're looking for meal ideas, health tips, or dietary guidance, we've got you covered. 
+        Join us on this journey to discover the joy of healthy eating!</p>
+    </div>
+
+    <div class="section" id="contactus">
+        <h2>Contact Us</h2>
+        <p><strong>Email:</strong> foodinfo123@gmail.com</p>
+        <p><strong>Phone:</strong> +1 234 567 890</p>
+        <p><strong>Address:</strong> 123 Healthy Street, Food City, FC 56789</p>
+    </div>
+</body>
+</html>

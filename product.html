@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background: linear-gradient(to right, #000428, #004e92);
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .cart-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cart-icon {
+            width: 30px;
+            height: 30px;
+        }
+
+        .marquee {
+            background: #222;
+            padding: 10px;
+            overflow: hidden;
+            white-space: nowrap;
+            color: yellow;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            justify-items: center;
+        }
+
+        .product {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 20px;
+            border-radius: 10px;
+            transition: transform 0.3s, background 0.3s;
+            text-align: center;
+            width: 260px;
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+        }
+
+        .product:hover {
+            transform: scale(1.05);
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .product img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .product h2 {
+            font-size: 20px;
+            margin: 10px 0;
+        }
+
+        .product p {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .add-to-cart {
+            background: yellow;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            margin-top: 10px;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            width: 100%;
+        }
+
+        .add-to-cart:hover {
+            background: orange;
+            transform: scale(1.2);
+        }
+
+        .go-to-cart {
+            display: inline-block;
+            background: yellow;
+            color: black;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 12px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 20px;
+        }
+
+        .go-to-cart:hover {
+            background: orange;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>HEALTHY AND NUTRITIONAL FOODS</h1>
+        <button class="cart-button" onclick="goToCart()">
+            <img src="cart1.png" alt="Cart" class="cart-icon">
+        </button>
+    </header>
+    <marquee class="marquee">🔥 HEALTHY AND NUTRITIONAL FOODS 🔥</marquee>
+    <h2>HIGH PROTEINS AND CARBS FOODS </h2>
+
+    <main class="product-grid">
+        <div class="product">
+            <img src="egg.jfif" alt="egg">
+            <h2>egg</h2>
+            <p>Rs-120</p>
+            <button class="add-to-cart" onclick="addToCart(' egg', 120)">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="chikn.jpg" alt="food">
+            <h2>chicken</h2>
+            <p>Rs -300</p>
+            <button class="add-to-cart" onclick="addToCart('chicken', 300)">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="meat.jfif" alt="">
+            <h2>Meat</h2>
+            <p>Rs-250</p>
+            <button class="add-to-cart" onclick="addToCart('Meat', 250)">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="brownstewbeans.avif" alt="food">
+            <h2>Beans stew </h2>
+            <p>Rs-150</p>
+            <button class="add-to-cart" onclick="addToCart('Beans stew', 150)">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="Chicken Burrito Bowl.jfif" alt="food">
+            <h2>Burrito Bowl</h2>
+            <p>Rs-220</p>
+            <button class="add-to-cart" onclick="addToCart(' Burrito', 220)">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="Easy Yogurt Granola Bowls.jfif" alt="food">
+            <h2>Mixed Yogurt Bowl</h2>
+            <p>Rs -300</p>
+            <button class="add-to-cart" onclick="addToCart('Mixed Yougart', 300)">Add to Cart</button>
+        </div> 
+        <div class="product">
+            <img src="8 Foods to Eat to Boost Your Immune System _ Nuts and Seeds _ Cold and Flu Season.jfif"
+                alt="nuts">
+            <h2>Nuts and Seeds</h2>
+            <p>Rs-420</p>
+            <button class="add-to-cart" onclick="addToCart(' Nuts', 420)">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="applesalad.avif" alt="food">
+            <h2>Apple Salad</h2>
+            <p>Rs-300</p>
+            <button class="add-to-cart" onclick="addToCart('Apple Salad', 300)">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="sweetpotatohash.avif" alt="">
+            <h2>Potato mash</h2>
+            <p>Rs-250</p>
+            <button class="add-to-cart" onclick="addToCart('Potato mash', 250)">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="smoothie.avif" alt="food">
+            <h2>JUICE</h2>
+            <p>Rs-150</p>
+            <button class="add-to-cart" onclick="addToCart('JUICE', 150)">Add to Cart</button>
+        </div>
+    </main>
+
+    <a href="cart.html" class="go-to-cart">Go To Cart!</a>
+
+    <script>
+        function addToCart(name, price) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let existingItem = cart.find(item => item.name === name);
+
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ name, price, quantity: 1 });
+            }
+
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert(`${name} added to cart!`);
+        }
+
+        function goToCart() {
+            window.location.href = 'cart.html';
+        }
+    </script>
+</body>
+
+</html>

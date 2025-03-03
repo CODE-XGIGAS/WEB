@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        
+        body {
+            background: url('cart.webp');
+            color: #fff;
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-top: 20px;
+            text-shadow: 2px 2px 5px rgba(228, 83, 83, 0.5);
+        }
+
+        
+        .cart-container {
+            width: 90%;
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            margin: 20px 0;
+            transition: 0.3s ease-in-out;
+        }
+
+      
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.2);
+            margin: 10px 0;
+            border-radius: 8px;
+            font-size: 18px;
+            transition: 0.3s ease-in-out;
+            box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .cart-item:hover {
+            transform: scale(1.02);
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+       .btn{
+        background: #2ecc71;
+         width: auto;
+         height: 40px;
+         margin: 20px;
+         border: none;
+         border-radius: 10px;
+         font-size: 20px;
+         font-family:Georgia, 'Times New Roman', Times, serif;
+
+
+       }
+     
+        .return-links {
+            margin-top: 20px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .return-links a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            background: linear-gradient(135deg, #0f0f0f, #050505);
+            padding: 12px 20px;
+            border-radius: 8px;
+            transition: 0.3s ease-in-out;
+            font-weight: bold;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .return-links a::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300%;
+            height: 300%;
+            background: rgba(255, 255, 255, 0.3);
+            transition: transform 0.5s ease-in-out;
+            transform: translate(-50%, -50%) scale(0);
+            border-radius: 50%;
+        }
+
+        .return-links a:hover::before {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .return-links a:hover {
+            transform: scale(1.05);
+        }
+
+        
+        #total-price {
+            font-size: 24px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Your Cart</h1>
+    <div class="cart-container" id="cart-container"></div>
+    <h2>Total: $<span id="total-price">0.00</span></h2>
+  <p>  
+    <button class="btn" onclick="clearCart()">Clear Cart</button>
+    <button class="btn" onclick="checkout()">Proceed to Checkout</button></p>
+
+    <div class="return-links">
+        <a href="product.html">Return to FOOD collection </a>
+        <a href="refer.html">Return to Home </a>
+    </div>
+
+    <script>
+        function loadCart() {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let cartContainer = document.getElementById('cart-container');
+            let totalPrice = 0;
+            cartContainer.innerHTML = '';
+
+            if (cart.length === 0) {
+                cartContainer.innerHTML = '<p style="font-size: 20px;">Your cart is empty.</p>';
+                document.getElementById('total-price').textContent = '0.00';
+                return;
+            }
+
+            cart.forEach((item, index) => {
+                totalPrice += item.price * item.quantity;
+                let div = document.createElement('div');
+                div.classList.add('cart-item');
+                div.innerHTML = `
+                    <span>${item.name} - $${item.price.toFixed(2)} x ${item.quantity}</span>
+                    <button onclick="removeItem(${index})">Remove</button>
+                `;
+                cartContainer.appendChild(div);
+            });
+
+            document.getElementById('total-price').textContent = totalPrice.toFixed(2);
+        }
+
+        function removeItem(index) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            if (cart[index].quantity > 1) {
+                cart[index].quantity -= 1;
+            } else {
+                cart.splice(index, 1);
+            }
+            localStorage.setItem('cart', JSON.stringify(cart));
+            loadCart();
+        }
+
+        function clearCart() {
+            localStorage.removeItem('cart');
+            loadCart();
+        }
+
+        function checkout() {
+            alert('Checkout functionality coming soon!');
+        }
+
+        loadCart();
+    </script>
+</body>
+</html>

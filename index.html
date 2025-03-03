@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login page</title>
+   <link rel="stylesheet" href="style.css">
+   <style>
+    body{
+        background: url('hero.webp');
+    }
+   </style>
+</head>
+<body>
+    <nav>
+        <span>Nutrition Website</span>
+        <div>
+            <button class="btn" onclick="openPopup('signin')">Sign In</button>
+            <button class="btn" onclick="openPopup('signup')">Sign Up</button>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <h2>Welcome to Our Website</h2>
+        <img src="bnr.jpg" alt="Website Image">
+        <p>We provide amazing content and features. Join us today!</p>
+    </div>
+    
+   
+    <div id="signinPopup" class="popup">
+        <h3>Sign In</h3>
+        <input type="text" id="signinUser" placeholder="Username" required><br>
+        <input type="password" id="signinPass" placeholder="Password" required><br>
+        <button onclick="signIn()">Login</button>
+        <button onclick="closePopup('signin')">Close</button>
+        <p id="signinError"></p>
+    </div>
+    
+  
+    <div id="signupPopup" class="popup">
+        <h3>Sign Up</h3>
+        <input type="text" id="signupUser" placeholder="Username" required><br>
+        <input type="text" id="firstName" placeholder="First Name"><br>
+        <input type="text" id="lastName" placeholder="Last Name (Optional)"><br>
+        <input type="email" id="signupEmail" placeholder="Email" required><br>
+        <input type="password" id="signupPass" placeholder="Password" required><br>
+        <button onclick="signUp()">Register</button>
+        <button onclick="closePopup('signup')">Close</button>
+        <p id="signupMessage"></p>
+    </div>
+
+    <script>
+        function openPopup(type) {
+            document.getElementById(type + 'Popup').style.display = 'block';
+        }
+
+        function closePopup(type) {
+            document.getElementById(type + 'Popup').style.display = 'none';
+        }
+
+        function signUp() {
+            let username = document.getElementById("signupUser").value.trim();
+            let firstName = document.getElementById("firstName").value.trim();
+            let lastName = document.getElementById("lastName").value.trim();
+            let email = document.getElementById("signupEmail").value.trim();
+            let password = document.getElementById("signupPass").value.trim();
+            let message = document.getElementById("signupMessage");
+
+           
+            let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+           
+            if (username === "" || email === "" || password === "") {
+                message.style.color = "red";
+                message.innerText = "Please fill in all required fields!";
+                return;
+            }
+
+           
+            if (!emailPattern.test(email)) {
+                message.style.color = "red";
+                message.innerText = "Invalid email format!";
+                return;
+            }
+
+            if (password.length < 6) {
+                message.style.color = "red";
+                message.innerText = "Password must be at least 6 characters long!";
+                return;
+            }
+
+          
+            let userData = { username, firstName, lastName, email, password };
+            localStorage.setItem("userInfo", JSON.stringify(userData));
+
+            message.style.color = "green";
+            message.innerText = "User registered successfully!";
+        }
+
+        
+        function signIn() {
+            let username = document.getElementById("signinUser").value;
+            let password = document.getElementById("signinPass").value;
+            let storedData = JSON.parse(localStorage.getItem("userInfo"));
+
+            if (storedData && storedData.username === username && storedData.password === password) {
+                window.location.href = "refer.html";
+            } else {
+                document.getElementById("signinError").innerText = "Incorrect username or password!";
+            }
+        }
+    </script>
+</body>
+</html>
